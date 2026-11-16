@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terminal — DisputeNews</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <nav class="header-nav header-nav-left" aria-label="Primary">
+        <a href="terminal.html">Terminal</a>
+        <a href="solutions.html">Solutions</a>
+      </nav>
+      <a href="./" class="brand">DisputeNews</a>
+      <nav class="header-nav header-nav-right" aria-label="Secondary">
+        <a href="team.html">Our Team</a>
+        <a href="press.html">Press Release</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="auth-page">
+    <div class="card auth-card">
+      <span class="tag">Terminal</span>
+      <h1>Sign in</h1>
+      <p class="auth-sub">Access your DisputeNews Terminal.</p>
+
+      <form class="auth-form" id="login-form" novalidate>
+        <label class="field">
+          <span>Email</span>
+          <input type="email" name="email" autocomplete="email" placeholder="you@example.com" required>
+        </label>
+        <label class="field">
+          <span class="field-row">Password <a href="#" class="field-link">Forgot?</a></span>
+          <input type="password" name="password" autocomplete="current-password" placeholder="Password" required>
+        </label>
+        <label class="check">
+          <input type="checkbox" name="remember">
+          <span>Keep me signed in</span>
+        </label>
+        <button type="submit" class="btn-primary btn-block">Sign in</button>
+        <p class="auth-msg" id="login-msg" role="status" hidden></p>
+      </form>
+
+      <p class="auth-foot">Don&rsquo;t have an account? <a href="mailto:hello@disputenews.com?subject=Terminal%20access">Request access</a></p>
+    </div>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="footer-inner">
+      <div class="footer-col footer-brand">
+        <span class="brand">DisputeNews</span>
+        <p class="footer-tagline">Launching soon.</p>
+      </div>
+
+      <div class="footer-col">
+        <h2 class="footer-heading">Contact</h2>
+        <ul class="footer-list">
+          <li><a href="mailto:hello@disputenews.com">hello@disputenews.com</a></li>
+          <li><a href="mailto:press@disputenews.com">press@disputenews.com</a></li>
+          <li><a href="tel:+10000000000">+1 (000) 000-0000</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h2 class="footer-heading">Explore</h2>
+        <ul class="footer-list">
+          <li><a href="terminal.html">Terminal</a></li>
+          <li><a href="solutions.html">Solutions</a></li>
+          <li><a href="team.html">Our Team</a></li>
+          <li><a href="press.html">Press Release</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h2 class="footer-heading">Legal</h2>
+        <ul class="footer-list">
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="cookies.html">Cookie Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-copy">&copy; <span id="year"></span> DisputeNews. All rights reserved.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
