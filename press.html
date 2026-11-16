@@ -28,27 +28,35 @@
       <p>Announcements and updates from DisputeNews. For media inquiries, email <a href="mailto:press@disputenews.com">press@disputenews.com</a>.</p>
     </section>
 
-    <div class="release-head">
-      <h2 class="release-head-title">Latest releases</h2>
-      <div class="scroll-btns">
-        <button type="button" class="scroll-btn" data-dir="-1" aria-label="Scroll to previous releases">&larr;</button>
-        <button type="button" class="scroll-btn" data-dir="1" aria-label="Scroll to next releases">&rarr;</button>
+    <section class="release-section" aria-labelledby="releases-title">
+      <div class="release-head">
+        <h2 class="release-head-title" id="releases-title">Press releases</h2>
+        <span class="release-count" id="release-count"></span>
       </div>
-    </div>
-    <section class="release-list" id="release-list" aria-label="Press releases" tabindex="0">
-      <article class="card release-card">
-        <div class="release-meta"><time datetime="2026-11-15">November 15, 2026</time><span class="release-kind">Product</span></div>
-        <h2><a href="press-launch-preview.html">DisputeNews Opens Launch Preview to Investors</a></h2>
-        <p>Early investors can now try the lightweight, data-intensive news platform ahead of its public launch.</p>
-        <a href="press-launch-preview.html" class="release-link">Read the release &rarr;</a>
-      </article>
 
-      <article class="card release-card">
-        <div class="release-meta"><time datetime="2026-10-29">October 29, 2026</time><span class="release-kind">Company</span></div>
-        <h2><a href="press-website-launch.html">DisputeNews Launches Its Website, Opening Contact for Investors and Clients</a></h2>
-        <p>The new site and domain give investors a direct way to get in touch and see platform previews, and give prospective clients a way to reach the team.</p>
-        <a href="press-website-launch.html" class="release-link">Read the release &rarr;</a>
-      </article>
+      <!-- Newest first. Add new releases at the top; the list shows 5 per page. -->
+      <ol class="release-list" id="release-list">
+        <li class="release-row">
+          <time class="release-date" datetime="2026-11-15">Nov 15, 2026</time>
+          <div class="release-body">
+            <span class="release-kind">Product</span>
+            <h3><a href="press-launch-preview.html">DisputeNews Opens Launch Preview to Investors</a></h3>
+            <p>Early investors can now try the lightweight, data-intensive news platform ahead of its public launch.</p>
+          </div>
+          <a href="press-launch-preview.html" class="release-link" aria-label="Read: DisputeNews Opens Launch Preview to Investors">Read &rarr;</a>
+        </li>
+        <li class="release-row">
+          <time class="release-date" datetime="2026-10-29">Oct 29, 2026</time>
+          <div class="release-body">
+            <span class="release-kind">Company</span>
+            <h3><a href="press-website-launch.html">DisputeNews Launches Its Website, Opening Contact for Investors and Clients</a></h3>
+            <p>The new site and domain give investors a direct way to get in touch and see platform previews, and give prospective clients a way to reach the team.</p>
+          </div>
+          <a href="press-website-launch.html" class="release-link" aria-label="Read: DisputeNews Launches Its Website">Read &rarr;</a>
+        </li>
+      </ol>
+
+      <nav class="pager" id="pager" aria-label="Press release pages" hidden></nav>
     </section>
 
     <section class="team-outcome">

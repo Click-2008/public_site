@@ -136,28 +136,45 @@ if (loginForm) {
   });
 }
 
-// Press releases: arrow buttons scroll the row one card at a time.
+// Press releases: vertical list, 5 per page, with page buttons. Page is kept in ?page=N.
 const releaseList = document.getElementById("release-list");
 if (releaseList) {
-  const btnWrap = document.querySelector(".scroll-btns");
-  const btns = [...btnWrap.querySelectorAll(".scroll-btn")];
-  const step = () => {
-    const card = releaseList.querySelector(".release-card");
-    return card ? card.offsetWidth + 16 : 300;
+  const PER_PAGE = 5;
+  const rows = [...releaseList.querySelectorAll(".release-row")];
+  const pager = document.getElementById("pager");
+  const count = document.getElementById("release-count");
+  const pages = Math.max(1, Math.ceil(rows.length / PER_PAGE));
+  const fromUrl = parseInt(new URLSearchParams(location.search).get("page"), 10);
+  let page = Math.min(pages, Math.max(1, fromUrl || 1));
+
+  const render = (scroll) => {
+    rows.forEach((r, i) => { r.hidden = Math.floor(i / PER_PAGE) + 1 !== page; });
+    const first = (page - 1) * PER_PAGE + 1, last = Math.min(rows.length, page * PER_PAGE);
+    count.textContent = rows.length > PER_PAGE
+      ? `${first}–${last} of ${rows.length}`
+      : `${rows.length} release${rows.length === 1 ? "" : "s"}`;
+    pager.hidden = pages <= 1;
+    if (pages > 1) {
+      const btn = (label, target, opts = {}) =>
+        `<button type="button" data-page="${target}"${opts.current ? ' aria-current="page"' : ""}${opts.disabled ? " disabled" : ""}${opts.aria ? ` aria-label="${opts.aria}"` : ""}>${label}</button>`;
+      let html = btn("&larr; Prev", page - 1, { disabled: page === 1, aria: "Previous page" });
+      for (let n = 1; n <= pages; n++) html += btn(n, n, { current: n === page, aria: `Page ${n}` });
+      html += btn("Next &rarr;", page + 1, { disabled: page === pages, aria: "Next page" });
+      pager.innerHTML = html;
+    }
+    const url = new URL(location.href);
+    if (page > 1) url.searchParams.set("page", page); else url.searchParams.delete("page");
+    history.replaceState(null, "", url);
+    if (scroll) document.querySelector(".release-section").scrollIntoView({ behavior: "smooth", block: "start" });
   };
-  const update = () => {
-    const max = releaseList.scrollWidth - releaseList.clientWidth - 2;
-    btns.forEach((b) => {
-      b.disabled = Number(b.dataset.dir) < 0 ? releaseList.scrollLeft <= 2 : releaseList.scrollLeft >= max;
-    });
-    btnWrap.hidden = max <= 0;   // hide arrows when every card already fits
-  };
-  btns.forEach((b) => b.addEventListener("click", () => {
-    releaseList.scrollBy({ left: step() * Number(b.dataset.dir), behavior: "smooth" });
-  }));
-  releaseList.addEventListener("scroll", update, { passive: true });
-  addEventListener("resize", update);
-  update();
+
+  pager.addEventListener("click", (e) => {
+    const b = e.target.closest("button[data-page]");
+    if (!b || b.disabled) return;
+    page = Number(b.dataset.page);
+    render(true);
+  });
+  render(false);
 }
 
 // Cookie notice: "Accept" up front, "Necessary only" tucked behind an options toggle.
