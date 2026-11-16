@@ -3,13 +3,181 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>disputeNews</title>
+  <title>DisputeNews</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="home">
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <nav class="header-nav header-nav-left" aria-label="Primary">
+        <a href="terminal.html">Terminal</a>
+        <a href="solutions.html">Solutions</a>
+      </nav>
+      <a href="./" class="brand">DisputeNews</a>
+      <nav class="header-nav header-nav-right" aria-label="Secondary">
+        <a href="team.html">Our Team</a>
+        <a href="press.html">Press Release</a>
+      </nav>
+    </div>
+  </header>
+
   <main>
-    <h1 id="greeting">Hello World</h1>
+    <section class="hero">
+      <div class="hero-media" aria-hidden="true">
+        <video class="hero-video" id="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/video/hero-poster.jpg">
+          <source src="assets/video/hero.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <p class="eyebrow">Countdown to</p>
+      <h1>Launch</h1>
+
+      <div class="countdown" id="countdown" aria-live="polite">
+        <div class="unit"><span class="value" id="cd-days">00</span><span class="label">Days</span></div>
+        <span class="sep">:</span>
+        <div class="unit"><span class="value" id="cd-hours">00</span><span class="label">Hours</span></div>
+        <span class="sep">:</span>
+        <div class="unit"><span class="value" id="cd-minutes">00</span><span class="label">Minutes</span></div>
+        <span class="sep">:</span>
+        <div class="unit"><span class="value" id="cd-seconds">00</span><span class="label">Seconds</span></div>
+      </div>
+
+      <div class="invest">
+        <a href="#invest" class="btn-primary">Invest in DisputeNews</a>
+        <p class="invest-note">Get equity in the company as an early investor.</p>
+      </div>
+    </section>
+
+    <section class="features" aria-label="What DisputeNews offers">
+      <article class="feature" id="analytics">
+        <div class="feature-copy">
+          <span class="tag">Live Analytics</span>
+          <h2>See what a story touches, as it happens.</h2>
+          <p>DisputeNews doesn&rsquo;t tell you which way to lean. As news breaks, we map the companies, sectors and assets it affects and surface the signals moving around them: shifts in prediction market odds, unusual jumps in options volume and key dates ahead. You see the impact. The conclusion is yours.</p>
+        </div>
+        <div class="feature-visual card" aria-hidden="true">
+          <div class="visual-head">
+            <span class="live-badge">LIVE</span>
+            <span class="sample">Sample</span>
+          </div>
+
+          <div class="signal">
+            <div class="signal-top">
+              <span class="signal-label">Prediction market</span>
+              <span class="signal-move move neg" style="--s:.8">58% &rarr; 41%</span>
+            </div>
+            <p class="signal-name">Rate cut by December</p>
+            <div class="dist" style="--from:58%; --to:41%">
+              <span class="dist-fill bar-fill neg" style="--s:.8"></span>
+              <span class="dist-prev"></span>
+            </div>
+            <div class="dist-legend"><span><i class="key key-prev"></i>Before story 58%</span><span><i class="key key-now bar-fill neg" style="--s:.8"></i>Now 41%</span></div>
+          </div>
+
+          <div class="signal">
+            <div class="signal-top">
+              <span class="signal-label">Options volume</span>
+              <span class="signal-move move pos" style="--s:.9">2.8&times; avg</span>
+            </div>
+            <p class="signal-name">Regional bank ETF</p>
+            <div class="vol">
+              <span style="height:30%"></span><span style="height:26%"></span><span style="height:34%"></span>
+              <span style="height:28%"></span><span style="height:32%"></span><span style="height:29%"></span>
+              <span class="vol-jump bar-fill pos" style="height:92%; --s:.9"></span>
+            </div>
+          </div>
+
+          <div class="impacted">
+            <span class="impacted-label">Impacted areas</span>
+            <div class="chips">
+              <span class="chip-s">Banks</span>
+              <span class="chip-s">Housing</span>
+              <span class="chip-s">Treasuries</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="feature feature-flip" id="aggregate">
+        <div class="feature-copy">
+          <span class="tag">News Aggregate</span>
+          <h2>Every side of the story, in one place.</h2>
+          <p>We group articles from many outlets by topic, so instead of reading one take you see the whole conversation side by side. Compare how different sources frame the same event, spot where they agree and where they dispute the facts, and make up your own mind.</p>
+        </div>
+        <div class="feature-visual card" aria-hidden="true">
+          <div class="visual-head">
+            <span class="topic">Topic &middot; Interest rates</span>
+            <span class="sample">Sample</span>
+          </div>
+          <ul class="source-rows">
+            <li><span class="src">Outlet A</span><span class="stance">Supports</span></li>
+            <li><span class="src">Outlet B</span><span class="stance">Disputes</span></li>
+            <li><span class="src">Outlet C</span><span class="stance">Neutral</span></li>
+          </ul>
+          <p class="visual-foot">12 articles grouped &middot; 3 viewpoints</p>
+        </div>
+      </article>
+
+      <article class="feature" id="speed">
+        <div class="feature-copy">
+          <span class="tag">Speed</span>
+          <h2>From headline to impact in seconds.</h2>
+          <p>DisputeNews is built to move fast. The moment an article breaks, we pull it in, group it with related coverage, map the areas it affects and refresh the market data around them. Results keep updating as the story develops, so you&rsquo;re always building your conviction on the latest picture, not yesterday&rsquo;s.</p>
+        </div>
+        <div class="feature-visual card" aria-hidden="true">
+          <div class="visual-head">
+            <span class="live-badge">LIVE</span>
+            <span class="sample">Sample</span>
+          </div>
+          <ol class="pipeline">
+            <li><span class="step-time">0s</span><span class="step-name">Article published</span></li>
+            <li><span class="step-time">+2s</span><span class="step-name">Pulled in and grouped by topic</span></li>
+            <li><span class="step-time">+5s</span><span class="step-name">Impacted areas mapped</span></li>
+            <li><span class="step-time">+8s</span><span class="step-name">Market signals refreshed</span></li>
+            <li class="step-live"><span class="step-time">Live</span><span class="step-name">Updates as the story develops</span></li>
+          </ol>
+        </div>
+      </article>
+    </section>
   </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="footer-inner">
+      <div class="footer-col footer-brand">
+        <span class="brand">DisputeNews</span>
+        <p class="footer-tagline">Launching soon.</p>
+      </div>
+
+      <div class="footer-col">
+        <h2 class="footer-heading">Contact</h2>
+        <ul class="footer-list">
+          <li><a href="mailto:hello@disputenews.com">hello@disputenews.com</a></li>
+          <li><a href="mailto:press@disputenews.com">press@disputenews.com</a></li>
+          <li><a href="tel:+10000000000">+1 (000) 000-0000</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h2 class="footer-heading">Explore</h2>
+        <ul class="footer-list">
+          <li><a href="terminal.html">Terminal</a></li>
+          <li><a href="solutions.html">Solutions</a></li>
+          <li><a href="team.html">Our Team</a></li>
+          <li><a href="press.html">Press Release</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h2 class="footer-heading">Legal</h2>
+        <ul class="footer-list">
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="cookies.html">Cookie Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-copy">&copy; <span id="year"></span> DisputeNews. All rights reserved.</p>
+  </footer>
+
   <script src="js/main.js"></script>
 </body>
 </html>
