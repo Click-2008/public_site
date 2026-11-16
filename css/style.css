@@ -137,7 +137,7 @@ body.home .site-header:not(.scrolled) {
   gap: 24px;
 }
 
-/* Hero background video: scrolling story cards, dimmed so the countdown stays readable */
+/* Hero background video: scrolling story cards, dimmed so the headline stays readable */
 .hero-media {
   position: absolute;
   inset: 0;
@@ -183,42 +183,17 @@ body.home .site-header:not(.scrolled) {
 
 .hero h1 {
   margin: 0;
-  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  max-width: 16ch;
+  font-size: clamp(2.25rem, 6.5vw, 4.5rem);
+  line-height: 1.05;
   letter-spacing: -0.02em;
 }
 
-.countdown {
-  display: flex;
-  align-items: flex-start;
-  gap: clamp(8px, 2vw, 20px);
-}
-
-.unit {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-width: clamp(56px, 14vw, 96px);
-}
-
-.value {
-  font-size: clamp(2rem, 7vw, 3.5rem);
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
-  line-height: 1;
-}
-
-.label {
-  margin-top: 8px;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--muted);
-}
-
-.sep {
-  font-size: clamp(2rem, 7vw, 3.5rem);
-  font-weight: 300;
-  line-height: 1;
+.hero-sub {
+  margin: 0;
+  max-width: 34rem;
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
+  line-height: 1.5;
   color: var(--muted);
 }
 

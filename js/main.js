@@ -1,6 +1,3 @@
-// Launch date — change this to the real date.
-const LAUNCH_DATE = new Date("2026-12-15T00:00:00");
-
 document.documentElement.classList.add("js");
 
 // Header: transparent at the top, solid once you scroll.
@@ -97,30 +94,6 @@ if (heroVideo) {
   document.addEventListener("visibilitychange", () => {
     if (!document.hidden && heroVideo.paused) heroVideo.play().catch(() => {});
   });
-}
-
-// Countdown clock (homepage only).
-const countdown = document.getElementById("countdown");
-if (countdown) {
-  const els = {
-    days: document.getElementById("cd-days"),
-    hours: document.getElementById("cd-hours"),
-    minutes: document.getElementById("cd-minutes"),
-    seconds: document.getElementById("cd-seconds"),
-  };
-  const pad = (n) => String(n).padStart(2, "0");
-  let timer;
-  const tick = () => {
-    const diff = Math.max(0, LAUNCH_DATE - Date.now());
-    const s = Math.floor(diff / 1000);
-    els.days.textContent = pad(Math.floor(s / 86400));
-    els.hours.textContent = pad(Math.floor((s % 86400) / 3600));
-    els.minutes.textContent = pad(Math.floor((s % 3600) / 60));
-    els.seconds.textContent = pad(s % 60);
-    if (diff === 0) clearInterval(timer);
-  };
-  timer = setInterval(tick, 1000);
-  tick();
 }
 
 document.getElementById("year").textContent = new Date().getFullYear();
