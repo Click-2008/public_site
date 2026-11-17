@@ -30,7 +30,7 @@
       </div>
 
       <p class="eyebrow">Launch preview open to investors</p>
-      <h1>Officially coming to clients soon</h1>
+      <h1>Officially coming to clients <span class="sig">soon</span></h1>
       <p class="hero-sub">Client accounts open at launch. Until then, investors can see the platform in preview.</p>
 
       <div class="invest">
@@ -101,11 +101,14 @@
             <span class="sample">Sample</span>
           </div>
           <ul class="source-rows">
-            <li><span class="src">Outlet A</span><span class="stance">Supports</span></li>
-            <li><span class="src">Outlet B</span><span class="stance">Disputes</span></li>
-            <li><span class="src">Outlet C</span><span class="stance">Neutral</span></li>
+            <li><span class="src">Outlet A</span><span class="src-share agree" style="--w:42%"><i></i><b>5</b></span><span class="stance agree">Supports</span></li>
+            <li><span class="src">Outlet B</span><span class="src-share dispute" style="--w:33%"><i></i><b>4</b></span><span class="stance dispute">Disputes</span></li>
+            <li><span class="src">Outlet C</span><span class="src-share mixed" style="--w:25%"><i></i><b>3</b></span><span class="stance mixed">Neutral</span></li>
           </ul>
-          <p class="visual-foot">12 articles grouped &middot; 3 viewpoints</p>
+          <div class="agree-split" title="Share of articles by viewpoint">
+            <span class="agree" style="--w:42%"></span><span class="dispute" style="--w:33%"></span><span class="mixed" style="--w:25%"></span>
+          </div>
+          <p class="visual-foot">12 articles grouped &middot; 3 viewpoints &middot; <span class="foot-hl">1 fact in dispute</span></p>
         </div>
       </article>
 
@@ -121,12 +124,13 @@
             <span class="sample">Sample</span>
           </div>
           <ol class="pipeline">
-            <li><span class="step-time">0s</span><span class="step-name">Article published</span></li>
-            <li><span class="step-time">+2s</span><span class="step-name">Pulled in and grouped by topic</span></li>
-            <li><span class="step-time">+5s</span><span class="step-name">Impacted areas mapped</span></li>
-            <li><span class="step-time">+8s</span><span class="step-name">Market signals refreshed</span></li>
+            <li class="step-done"><span class="step-time">0s</span><span class="step-name">Article published</span></li>
+            <li class="step-done"><span class="step-time">+2s</span><span class="step-name">Pulled in and grouped by topic</span></li>
+            <li class="step-done"><span class="step-time">+5s</span><span class="step-name">Impacted areas mapped</span></li>
+            <li class="step-done"><span class="step-time">+8s</span><span class="step-name">Market signals refreshed</span></li>
             <li class="step-live"><span class="step-time">Live</span><span class="step-name">Updates as the story develops</span></li>
           </ol>
+          <p class="visual-foot pipeline-foot">Headline to signals in <span class="foot-sig">8 seconds</span></p>
         </div>
       </article>
     </section>
