@@ -150,8 +150,98 @@ if (releaseList) {
   render(false);
 }
 
-// Cookie notice: "Accept" up front, "Necessary only" tucked behind an options toggle.
-// Stored choice is "all" or "necessary"; check it with dnCookieConsent() before adding optional cookies.
+// Accessibility settings: stored per browser under "dn-a11y" and applied as
+// html classes (a11y-text, a11y-contrast, a11y-motion, a11y-links). A small
+// inline script in each page's <head> applies them before first paint.
+const A11Y_KEY = "dn-a11y";
+const A11Y_OPTIONS = [
+  { id: "text", label: "Larger text", hint: "Increase text size across the site" },
+  { id: "contrast", label: "High contrast", hint: "Stronger text and borders" },
+  { id: "motion", label: "Reduce motion", hint: "Stop animations and the background video" },
+  { id: "links", label: "Underline links", hint: "Make every link easy to spot" },
+];
+function readA11y() {
+  try {
+    return JSON.parse(localStorage.getItem(A11Y_KEY) || "{}");
+  } catch (e) {
+    return {};
+  }
+}
+function applyA11y(prefs) {
+  A11Y_OPTIONS.forEach((o) => document.documentElement.classList.toggle("a11y-" + o.id, !!prefs[o.id]));
+  const video = document.getElementById("hero-video");
+  if (video) prefs.motion ? video.pause() : video.play().catch(() => {});
+}
+
+let a11yPanel = null;
+function openA11y(opener) {
+  if (a11yPanel) {
+    a11yPanel.querySelector("input").focus();
+    return;
+  }
+  const prefs = readA11y();
+  a11yPanel = document.createElement("div");
+  a11yPanel.className = "a11y-panel";
+  a11yPanel.setAttribute("role", "dialog");
+  a11yPanel.setAttribute("aria-labelledby", "a11y-title");
+  a11yPanel.innerHTML = `
+    <span class="tag" id="a11y-title">Accessibility</span>
+    <ul class="a11y-list">
+      ${A11Y_OPTIONS.map((o) => `
+        <li>
+          <label class="a11y-row">
+            <span><strong>${o.label}</strong><small>${o.hint}</small></span>
+            <input type="checkbox" role="switch" data-opt="${o.id}" ${prefs[o.id] ? "checked" : ""}>
+            <span class="a11y-switch" aria-hidden="true"></span>
+          </label>
+        </li>`).join("")}
+    </ul>
+    <div class="a11y-actions">
+      <button type="button" class="a11y-reset">Reset</button>
+      <button type="button" class="a11y-done">Done</button>
+    </div>
+  `;
+  const notice = document.querySelector(".cookie-notice");
+  if (notice) notice.hidden = true;
+  a11yPanel.addEventListener("change", (e) => {
+    const box = e.target.closest("input[data-opt]");
+    if (!box) return;
+    const next = readA11y();
+    next[box.dataset.opt] = box.checked;
+    try {
+      localStorage.setItem(A11Y_KEY, JSON.stringify(next));
+    } catch (err) {}
+    applyA11y(next);
+  });
+  a11yPanel.querySelector(".a11y-reset").addEventListener("click", () => {
+    try {
+      localStorage.removeItem(A11Y_KEY);
+    } catch (err) {}
+    a11yPanel.querySelectorAll("input[data-opt]").forEach((b) => (b.checked = false));
+    applyA11y({});
+  });
+  const close = () => {
+    a11yPanel.remove();
+    a11yPanel = null;
+    const n = document.querySelector(".cookie-notice");
+    if (n) n.hidden = false;
+    const back = n ? n.querySelector(".cookie-a11y") : opener;
+    if (back) back.focus();
+  };
+  a11yPanel.querySelector(".a11y-done").addEventListener("click", close);
+  a11yPanel.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") close();
+  });
+  document.body.appendChild(a11yPanel);
+  a11yPanel.querySelector("input").focus();
+}
+applyA11y(readA11y());
+document.querySelectorAll("[data-a11y-open]").forEach((btn) =>
+  btn.addEventListener("click", () => openA11y(btn))
+);
+
+// Cookie notice: "Accept" (filled) beside "Decline" (outlined), plus accessibility settings.
+// Stored choice is "all" (Accept) or "necessary" (Decline); check it with dnCookieConsent() before adding optional cookies.
 const COOKIE_KEY = "dn-cookie-notice";
 function readConsent() {
   try {
@@ -173,13 +263,12 @@ if (!readConsent()) {
     <a href="terms.html">Terms of Service</a> and <a href="cookies.html">Cookie Policy</a>.</p>
     <div class="cookie-actions">
       <button type="button" class="cookie-accept">Accept</button>
-      <button type="button" class="cookie-toggle" aria-expanded="false" aria-controls="cookie-options" aria-label="More cookie options">
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-      </button>
+      <button type="button" class="cookie-decline">Decline</button>
     </div>
-    <div class="cookie-options" id="cookie-options" hidden>
-      <button type="button" class="cookie-necessary">Necessary only</button>
-    </div>
+    <button type="button" class="cookie-a11y">
+      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="4.5" r="1.5"/><path d="M5 8l7 1.5L19 8M12 9.5V14m0 0l-3 6m3-6l3 6"/></svg>
+      Accessibility settings
+    </button>
   `;
   const choose = (value) => {
     try {
@@ -187,14 +276,8 @@ if (!readConsent()) {
     } catch (e) {}
     notice.remove();
   };
-  const toggle = notice.querySelector(".cookie-toggle");
-  const options = notice.querySelector(".cookie-options");
   notice.querySelector(".cookie-accept").addEventListener("click", () => choose("all"));
-  notice.querySelector(".cookie-necessary").addEventListener("click", () => choose("necessary"));
-  toggle.addEventListener("click", () => {
-    const open = toggle.getAttribute("aria-expanded") === "true";
-    toggle.setAttribute("aria-expanded", String(!open));
-    options.hidden = open;
-  });
+  notice.querySelector(".cookie-decline").addEventListener("click", () => choose("necessary"));
+  notice.querySelector(".cookie-a11y").addEventListener("click", (e) => openA11y(e.currentTarget));
   document.body.appendChild(notice);
 }
