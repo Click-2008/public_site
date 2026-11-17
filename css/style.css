@@ -91,6 +91,7 @@ body.home .site-header:not(.scrolled) {
   text-decoration: none;
 }
 
+
 .header-nav {
   display: flex;
   gap: 24px;
@@ -668,7 +669,9 @@ body.home .site-header:not(.scrolled) {
 }
 
 .legal a {
-  color: var(--brand);
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .legal-updated {
@@ -704,8 +707,7 @@ body.home .site-header:not(.scrolled) {
 }
 
 .team-intro p,
-.team-outcome p,
-.person p {
+.team-outcome p {
   margin: 0;
   line-height: 1.6;
   color: var(--muted);
@@ -715,24 +717,29 @@ body.home .site-header:not(.scrolled) {
   font-size: 1.05rem;
 }
 
-.team-grid {
+/* Team profiles: full-width rows, founder first and largest */
+.profile {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin: 48px 0;
+  grid-template-columns: minmax(220px, 1fr) 2fr;
+  gap: clamp(24px, 5vw, 72px);
+  padding: 40px 0;
+  border-top: 1px solid var(--line);
 }
 
-.person {
-  padding: 20px;
-  display: grid;
-  gap: 14px;
-  align-content: start;
+.profile-founder {
+  margin-top: 56px;
 }
 
-.person-head {
+.profile-advisor {
+  margin-bottom: 48px;
+  border-bottom: 1px solid var(--line);
+}
+
+.profile-side {
   display: flex;
-  align-items: center;
-  gap: 12px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
 }
 
 .avatar {
@@ -741,20 +748,79 @@ body.home .site-header:not(.scrolled) {
   flex: none;
   display: grid;
   place-items: center;
+  margin-bottom: 10px;
   border-radius: var(--r);
   background: color-mix(in srgb, var(--text) 8%, transparent);
   font-weight: 700;
   color: var(--muted);
 }
 
-.person-name {
-  margin: 0;
-  font-size: 1.1rem;
+.avatar-lg {
+  width: 72px;
+  height: 72px;
+  font-size: 1.3rem;
 }
 
-.person-role {
-  margin: 2px 0 0 !important;
-  font-size: 0.82rem;
+.profile-label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.profile-name {
+  margin: 0;
+  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+
+.profile-advisor .profile-name {
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+}
+
+.profile-role {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.profile-body {
+  max-width: 760px;
+}
+
+.profile-body > p {
+  margin: 0 0 14px;
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+.profile-founder .profile-body > p:first-child {
+  color: var(--text);
+  font-size: 1.12rem;
+}
+
+.profile-focus {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0 24px;
+  margin: 22px 0 0;
+  padding: 0;
+}
+
+.profile-focus li {
+  display: grid;
+  gap: 4px;
+  padding: 12px 0;
+  border-top: 1px solid var(--line);
+  font-size: 0.9rem;
+}
+
+.profile-focus span {
+  color: var(--muted);
 }
 
 .team-outcome {
@@ -777,11 +843,16 @@ body.home .site-header:not(.scrolled) {
   padding: calc(var(--header-h) + 64px) var(--gutter) 112px;
 }
 
+/* Four cards: 2 x 2 on most screens, one row of 4 on very wide ones (never 3 + 1) */
 .solution-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 16px;
   margin: 48px 0;
+}
+
+@media (min-width: 1700px) {
+  .solution-grid { grid-template-columns: repeat(4, 1fr); }
 }
 
 .solution {
@@ -1020,7 +1091,7 @@ body.home .site-header:not(.scrolled) {
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--brand);
+  color: var(--muted);
 }
 
 .release-link {
@@ -1106,9 +1177,9 @@ body.home .site-header:not(.scrolled) {
 .release-quote {
   margin: 28px 0;
   padding: 14px 18px;
-  border-left: 3px solid var(--brand);
+  border-left: 3px solid var(--line);
   border-radius: 0 var(--r) var(--r) 0;
-  background: color-mix(in srgb, var(--brand) 8%, var(--surface));
+  background: var(--surface);
 }
 
 .release-quote p {
@@ -1530,9 +1601,13 @@ body.no-scroll {
   .feature-flip .feature-copy {
     order: 0;
   }
-  .team-grid,
+  .profile,
   .solution-grid {
     grid-template-columns: 1fr;
+  }
+  .profile {
+    gap: 18px;
+    padding: 32px 0;
   }
   .footer-brand {
     grid-column: 1 / -1;
