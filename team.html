@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Our Team — DisputeNews</title>
   <link rel="stylesheet" href="css/style.css">
+  <script>try{var a=JSON.parse(localStorage.getItem("dn-a11y")||"{}");for(var k in a)if(a[k])document.documentElement.classList.add("a11y-"+k)}catch(e){}</script>
 </head>
 <body>
   <header class="site-header" id="site-header">
@@ -28,28 +29,38 @@
       <p>DisputeNews is a lightweight but data-intensive platform. It makes it quick and easy to reach advanced-level conclusions about the news without telling you which way to lean.</p>
     </section>
 
-    <section class="team-grid" aria-label="Team members">
-      <article class="card person">
-        <div class="person-head">
-          <span class="avatar" aria-hidden="true">VA</span>
-          <div>
-            <h2 class="person-name">Vincent Julber Aguilera</h2>
-            <p class="person-role">Founder</p>
-          </div>
-        </div>
-        <p>Vincent is a statistician at the University of California, Riverside. He began DisputeNews with a mission to give people clear data to build their own convictions from, through a platform that stays lightweight while doing the heavy data work behind the scenes.</p>
-      </article>
+    <section class="profile profile-founder" aria-labelledby="founder-name">
+      <div class="profile-side">
+        <span class="avatar avatar-lg" aria-hidden="true">VA</span>
+        <span class="profile-label">Founder</span>
+        <h2 class="profile-name" id="founder-name">Vincent Julber Aguilera</h2>
+        <p class="profile-role">Statistician &middot; University of California, Riverside</p>
+      </div>
+      <div class="profile-body">
+        <p>Vincent began DisputeNews with a mission to give people clear data to build their own convictions from. As a statistician, he saw how much of the news is opinion layered on top of numbers, and set out to build a platform that puts the numbers first.</p>
+        <p>He leads the product end to end: how stories are grouped, how impact is measured, and how the platform stays lightweight while doing the heavy data work behind the scenes.</p>
+        <ul class="profile-focus" aria-label="Focus areas">
+          <li><strong>Statistics</strong><span>How shifts in odds and volume are measured</span></li>
+          <li><strong>Product</strong><span>What reaches the user, and how fast</span></li>
+          <li><strong>Data pipeline</strong><span>From article intake to mapped impact</span></li>
+        </ul>
+      </div>
+    </section>
 
-      <article class="card person">
-        <div class="person-head">
-          <span class="avatar" aria-hidden="true">DA</span>
-          <div>
-            <h2 class="person-name">Dr. Aguilera</h2>
-            <p class="person-role">Advisor &middot; PhD, Cellular &amp; Molecular Biology</p>
-          </div>
-        </div>
-        <p>Dr. Aguilera holds a PhD in cellular and molecular biology and advises the project on research methods and data science.</p>
-      </article>
+    <section class="profile profile-advisor" aria-labelledby="advisor-name">
+      <div class="profile-side">
+        <span class="avatar" aria-hidden="true">DA</span>
+        <span class="profile-label">Advisor</span>
+        <h2 class="profile-name" id="advisor-name">Dr. Aguilera</h2>
+        <p class="profile-role">PhD, Cellular &amp; Molecular Biology</p>
+      </div>
+      <div class="profile-body">
+        <p>Dr. Aguilera holds a PhD in cellular and molecular biology and advises the project on research methods and data science, bringing a scientist&rsquo;s standard for how data is collected, tested and reported.</p>
+        <ul class="profile-focus" aria-label="Advises on">
+          <li><strong>Research methods</strong><span>Sound, repeatable measurement</span></li>
+          <li><strong>Data science</strong><span>Modeling and validation</span></li>
+        </ul>
+      </div>
     </section>
 
     <section class="team-outcome">
@@ -68,9 +79,9 @@
       <div class="footer-col">
         <h2 class="footer-heading">Contact</h2>
         <ul class="footer-list">
-          <li><a href="mailto:hello@disputenews.com">hello@disputenews.com</a></li>
-          <li><a href="mailto:support@disputenews.com">support@disputenews.com</a></li>
-          <li><a href="mailto:press@disputenews.com">press@disputenews.com</a></li>
+          <li><a href="mailto:hello@dispute.news">hello@dispute.news</a></li>
+          <li><a href="mailto:support@dispute.news">support@dispute.news</a></li>
+          <li><a href="mailto:press@dispute.news">press@dispute.news</a></li>
           <li><a href="tel:+10000000000">+1 (000) 000-0000</a></li>
         </ul>
       </div>
@@ -90,6 +101,7 @@
         <ul class="footer-list">
           <li><a href="terms.html">Terms of Service</a></li>
           <li><a href="cookies.html">Cookie Policy</a></li>
+          <li><button type="button" class="link-btn" data-a11y-open>Accessibility</button></li>
         </ul>
       </div>
     </div>

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Solutions — DisputeNews</title>
   <link rel="stylesheet" href="css/style.css">
+  <script>try{var a=JSON.parse(localStorage.getItem("dn-a11y")||"{}");for(var k in a)if(a[k])document.documentElement.classList.add("a11y-"+k)}catch(e){}</script>
 </head>
 <body>
   <header class="site-header" id="site-header">
@@ -35,7 +36,7 @@
         <p>Each story is mapped to the areas it affects, with the market signals moving around them.</p>
         <ul class="solution-list">
           <li><strong>Impacted areas.</strong> Companies, sectors, commodities and consumers, each marked as a direct, indirect or possible impact with a one-line reason.</li>
-          <li><strong>Prediction market shifts.</strong> How the odds on related outcomes moved from before the story to now.</li>
+          <li><strong>Prediction markets.</strong> How the odds on related outcomes moved from before the story to now.</li>
           <li><strong>Options volume.</strong> Unusual jumps or drops in options activity compared with the normal daily average.</li>
           <li><strong>What to watch.</strong> Upcoming dates and decisions that could move the story next.</li>
         </ul>
@@ -44,35 +45,36 @@
       <article class="card solution">
         <span class="tag tag-quiet">News Aggregate</span>
         <h2>Every side of the story</h2>
-        <p>We group coverage from many outlets by topic, so you see the whole conversation instead of a single take.</p>
+        <p>Coverage from many outlets is grouped by topic, so you see the whole conversation at once.</p>
         <ul class="solution-list">
           <li><strong>Topic grouping.</strong> Related articles are clustered automatically into one story.</li>
-          <li><strong>Side-by-side comparison.</strong> See how different outlets frame the same event.</li>
+          <li><strong>Side by side.</strong> See how different outlets frame the same event, headline by headline.</li>
           <li><strong>Agreement and dispute.</strong> Spot where sources line up and where they disagree on the facts.</li>
-          <li><strong>Transparent sources.</strong> Every story lists the outlets, filings and data it draws on.</li>
+          <li><strong>Transparent sources.</strong> Every story lists the outlets, filings and data it draws on, so you can check the source yourself.</li>
         </ul>
       </article>
 
       <article class="card solution">
         <span class="tag tag-quiet">Speed</span>
         <h2>From headline to impact in seconds</h2>
-        <p>Our pipeline is optimized to get from a breaking article to useful data as fast as possible.</p>
+        <p>Our pipeline is built to turn a breaking article into useful data as fast as possible.</p>
         <ul class="solution-list">
           <li><strong>Fast intake.</strong> Articles are pulled in and grouped moments after they publish.</li>
           <li><strong>Instant mapping.</strong> Impacted areas and market signals are attached automatically.</li>
           <li><strong>Live updates.</strong> Results refresh as the story develops, so you&rsquo;re never working from stale data.</li>
-          <li><strong>Lightweight.</strong> Built to load quickly on your phone, with the heavy data work done behind the scenes.</li>
+          <li><strong>Lightweight.</strong> Built to load quickly on your phone.</li>
         </ul>
       </article>
 
       <article class="card solution">
         <span class="tag tag-quiet">Clear Presentation</span>
         <h2>Data first, no verdicts</h2>
-        <p>We show you what changed and by how much, and leave the conclusion to you.</p>
+        <p>We show what changed and by how much, and leave the conclusion to you.</p>
         <ul class="solution-list">
           <li><strong>Direction at a glance.</strong> Green means a number went up and red means it went down, with stronger color for bigger moves.</li>
+          <li><strong>Baselines included.</strong> Every figure shows its starting point, like the odds before the story.</li>
           <li><strong>Measured, not opinionated.</strong> No buy, sell or sentiment calls. Just the numbers and their context.</li>
-          <li><strong>Built for conviction.</strong> Everything you need to form your own view, in one place.</li>
+          <li><strong>Built for conviction.</strong> Everything you need to form your own view.</li>
         </ul>
       </article>
     </section>
@@ -93,9 +95,9 @@
       <div class="footer-col">
         <h2 class="footer-heading">Contact</h2>
         <ul class="footer-list">
-          <li><a href="mailto:hello@disputenews.com">hello@disputenews.com</a></li>
-          <li><a href="mailto:support@disputenews.com">support@disputenews.com</a></li>
-          <li><a href="mailto:press@disputenews.com">press@disputenews.com</a></li>
+          <li><a href="mailto:hello@dispute.news">hello@dispute.news</a></li>
+          <li><a href="mailto:support@dispute.news">support@dispute.news</a></li>
+          <li><a href="mailto:press@dispute.news">press@dispute.news</a></li>
           <li><a href="tel:+10000000000">+1 (000) 000-0000</a></li>
         </ul>
       </div>
@@ -115,6 +117,7 @@
         <ul class="footer-list">
           <li><a href="terms.html">Terms of Service</a></li>
           <li><a href="cookies.html">Cookie Policy</a></li>
+          <li><button type="button" class="link-btn" data-a11y-open>Accessibility</button></li>
         </ul>
       </div>
     </div>
